@@ -274,7 +274,7 @@ main {
 .result-pillar-label {
   font-size: 12px; color: var(--muted);
 }
-.result-actions { display: flex; gap: 8px; }
+.result-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .action-btn {
   background: transparent;
   border: 1px solid var(--border);
@@ -282,6 +282,7 @@ main {
   padding: 7px 14px; border-radius: 4px;
   cursor: pointer; transition: all 0.2s;
   font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
 }
 .action-btn:hover { border-color: var(--gold); color: var(--gold); }
 .action-btn.primary {
@@ -316,6 +317,22 @@ main {
   background: linear-gradient(to right, var(--gold-dim), transparent);
   margin: 24px 0;
 }
+
+/* Art Prompt Card */
+#artPromptCard .result-section-content {
+    font-family: 'DM Sans', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(244,240,232,0.9);
+    user-select: all;
+    cursor: text;
+    padding: 8px 0;
+}
+#artPromptCard .result-section-content::selection {
+    background: rgba(201,168,76,0.3);
+    color: #fff;
+}
+
 .history-section { margin-top: 48px; }
 .history-title {
   font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
@@ -366,6 +383,8 @@ main {
   .pillar-grid { grid-template-columns: 1fr; }
   .result-header { flex-direction: column; gap: 16px; align-items: flex-start; }
   .result-body { padding: 24px 20px; }
+  .result-actions { flex-direction: column; }
+  .action-btn { text-align: center; }
 }
 </style>
 </head>
@@ -483,9 +502,25 @@ main {
       <div class="result-actions">
         <button class="action-btn" onclick="generatePost()">↻ Regerar</button>
         <button class="action-btn primary" onclick="copyFullPost()">Copiar tudo</button>
+        <button class="action-btn" onclick="generateArtPrompt()" style="border-color: rgba(224,192,112,0.3); color: #E0C070;">🎨 Prompt de Arte</button>
       </div>
     </div>
     <div class="result-body" id="resultBody"></div>
+  </div>
+
+  <!-- ART PROMPT CARD -->
+  <div class="result-card" id="artPromptCard" style="display: none; border-color: rgba(224,192,112,0.3);">
+    <div class="result-header" style="background: linear-gradient(135deg, rgba(224,192,112,0.08), transparent);">
+      <div class="result-header-left">
+        <span style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #E0C070;">🎨 Prompt de Arte</span>
+      </div>
+      <div class="result-actions">
+        <button class="action-btn primary" onclick="copyArtPrompt()">📋 Copiar prompt</button>
+      </div>
+    </div>
+    <div class="result-body" style="background: #15181f;">
+      <div class="result-section-content" id="artPromptContent" style="font-family: 'DM Sans', monospace; font-size: 13px; color: rgba(244,240,232,0.9); line-height: 1.8; user-select: all; cursor: text;"></div>
+    </div>
   </div>
 
   <div class="history-section" id="historySection">
@@ -555,6 +590,7 @@ async function generatePost() {
   btn.innerHTML = '<span class="btn-icon">⏳</span> Gerando...';
   document.getElementById('loadingState').classList.add('visible');
   document.getElementById('resultCard').classList.remove('visible');
+  document.getElementById('artPromptCard').style.display = 'none';
 
   try {
     const response = await fetch('/api/generate', {
@@ -656,6 +692,72 @@ function copyFullPost() {
   });
 }
 
+// ============ ART PROMPT GENERATOR ============
+
+function generateArtPrompt() {
+    if (!state.currentPost || !state.currentPost.hook) {
+        showToast('Gere um post primeiro para criar o prompt de arte', 'warning');
+        return;
+    }
+
+    const nicho = state.selectedNicho;
+    const pillar = state.selectedPillar;
+
+    const palettes = {
+        b2b: 'black #111418, gold #C9A84C, cream #F4F0E8',
+        perfumaria: 'black #111418, deep red #8B1A1A, golden mist',
+        mei: 'black #111418, green #4CAF92, cream #F4F0E8'
+    };
+
+    const visualStyles = {
+        b2b: 'premium office setting, overhead view of a desk with laptop, corporate elements, dramatic side lighting',
+        perfumaria: 'perfume bottle with colorful smoke, flower petals, cinematic lighting, abstract sensory background',
+        mei: 'entrepreneur working in a cozy home office, smartphone in hand, natural light, warm and welcoming atmosphere'
+    };
+
+    const moods = {
+        dor: 'moody lighting, heavy tone, high contrast shadows',
+        educacao: 'clean lighting, informative tone, generous negative space',
+        prova: 'warm celebration lighting, subtle triumph atmosphere',
+        oferta: 'premium lighting, product spotlight, centered composition'
+    };
+
+    const artPrompt = `${visualStyles[nicho]}, ${palettes[nicho]}, ${moods[pillar]}, dark luxury aesthetic, cinematic lighting, high contrast, leave space on the left third for text overlay, square format 1080x1080px, Instagram post, no text in the image, no people faces, photorealistic`;
+
+    const artPromptCard = document.getElementById('artPromptCard');
+    const artPromptContent = document.getElementById('artPromptContent');
+    
+    artPromptContent.textContent = artPrompt;
+    artPromptCard.style.display = 'block';
+    artPromptCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    artPromptCard.style.animation = 'none';
+    artPromptCard.offsetHeight;
+    artPromptCard.style.animation = 'fadeUp 0.5s ease';
+}
+
+function copyArtPrompt() {
+    const promptText = document.getElementById('artPromptContent').textContent;
+    
+    if (!promptText) {
+        showToast('Nenhum prompt para copiar', 'warning');
+        return;
+    }
+
+    navigator.clipboard.writeText(promptText).then(() => {
+        showToast('🎨 Prompt de arte copiado!');
+        const btn = document.querySelector('#artPromptCard .action-btn.primary');
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Copiado!';
+        setTimeout(() => {
+            btn.textContent = originalText;
+        }, 2000);
+    }).catch(() => {
+        showToast('Erro ao copiar', 'error');
+    });
+}
+
+// ============ HISTORY ============
+
 function addToHistory(post, contexto) {
   state.sessionHistory.unshift({
     post,
@@ -671,9 +773,7 @@ function addToHistory(post, contexto) {
 
   try {
     localStorage.setItem('movare_history', JSON.stringify(state.sessionHistory));
-  } catch (e) {
-    // localStorage pode estar cheio
-  }
+  } catch (e) {}
 
   renderHistory();
 }
@@ -702,6 +802,7 @@ function restoreHistory(i) {
   if (i >= 0 && i < state.sessionHistory.length) {
     state.currentPost = state.sessionHistory[i].post;
     renderResult(state.currentPost);
+    document.getElementById('artPromptCard').style.display = 'none';
     showToast('📜 Post restaurado!');
   }
 }
@@ -721,7 +822,7 @@ function formatDate(isoString) {
   return date.toLocaleDateString('pt-BR');
 }
 
-// Carregar histórico do localStorage
+// Carregar histórico
 try {
   const saved = localStorage.getItem('movare_history');
   if (saved) {
