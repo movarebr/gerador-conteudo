@@ -5,12 +5,10 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  // Responder requisição OPTIONS (preflight)
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
-  // Só aceitar POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Método não permitido' });
   }
@@ -18,7 +16,9 @@ export default async function handler(req, res) {
   try {
     const { contexto, objecao, tipo, nicho, pillar } = req.body;
 
-    // Validar campos obrigatórios
+    // LOG 1: Verificar o que chegou
+    console.log('📥 Dados recebidos:', { contexto, objecao, tipo, nicho, pillar });
+
     if (!contexto) {
       return res.status(400).json({ error: 'Contexto é obrigatório' });
     }
@@ -27,11 +27,13 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Nicho, pilar e tipo são obrigatórios' });
     }
 
-    // Pegar API Key das variáveis de ambiente (SEGURO!)
+    // LOG 2: Verificar API Key
     const API_KEY = process.env.ANTHROPIC_API_KEY;
+    console.log('🔑 API Key existe?', !!API_KEY);
+    console.log('🔑 Primeiros 10 chars:', API_KEY ? API_KEY.substring(0, 10) + '...' : 'NÃO ENCONTRADA');
     
     if (!API_KEY) {
-      console.error('ANTHROPIC_API_KEY não configurada');
+      console.error('❌ ANTHROPIC_API_KEY não configurada');
       return res.status(500).json({ 
         error: 'Configuração do servidor incompleta. A API key não foi configurada.' 
       });
@@ -41,7 +43,10 @@ export default async function handler(req, res) {
     const systemPrompt = buildSystemPrompt(nicho);
     const userPrompt = buildUserPrompt(contexto, objecao, tipo, nicho, pillar);
 
-    console.log('Enviando requisição para Anthropic API...');
+    console.log('📝 System Prompt:', systemPrompt.substring(0, 200) + '...');
+    console.log('📝 User Prompt:', userPrompt);
+
+    console.log('🌐 Enviando requisição para Anthropic API...');
     
     // Chamar API da Anthropic
     const response = await fetch('https://api.anthropic.com/v1/messages', {
@@ -63,59 +68,65 @@ export default async function handler(req, res) {
       })
     });
 
+    console.log('📡 Status da resposta Anthropic:', response.status);
+
     if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      console.error('Erro da API Anthropic:', errorData);
+      const errorText = await response.text();
+      console.error('❌ Erro Anthropic:', response.status, errorText);
       
       if (response.status === 401) {
-        return res.status(500).json({ error: 'API Key inválida' });
+        return res.status(500).json({ error: 'API Key inválida. Verifique a chave no console.anthropic.com' });
       }
       if (response.status === 429) {
         return res.status(429).json({ error: 'Muitas requisições. Aguarde um pouco.' });
       }
       
-      throw new Error(errorData.error?.message || `Erro ${response.status}`);
+      return res.status(500).json({ error: `Erro da API: ${response.status} - ${errorText}` });
     }
 
     const data = await response.json();
+    console.log('✅ Resposta recebida da Anthropic');
     
     if (!data.content || !data.content[0] || !data.content[0].text) {
-      console.error('Resposta inesperada:', data);
-      throw new Error('Formato de resposta inesperado');
+      console.error('❌ Formato inesperado:', JSON.stringify(data).substring(0, 500));
+      return res.status(500).json({ error: 'Formato de resposta inesperado da API' });
     }
 
     const raw = data.content[0].text.trim();
-    console.log('Resposta bruta:', raw.substring(0, 100) + '...');
+    console.log('📄 Resposta bruta:', raw.substring(0, 200) + '...');
     
-    // Limpar possível markdown
     const clean = raw.replace(/```json\n?|```\n?/g, '').trim();
+    console.log('🧹 JSON limpo:', clean.substring(0, 200) + '...');
     
     let post;
     try {
       post = JSON.parse(clean);
+      console.log('✅ JSON parseado com sucesso!');
     } catch (parseError) {
-      console.error('Erro ao parsear JSON:', clean);
+      console.error('❌ Erro ao parsear JSON:', clean);
       return res.status(500).json({ 
-        error: 'A IA retornou um formato inválido. Tente novamente.' 
+        error: 'A IA retornou um formato inválido. Tente novamente.',
+        raw_response: clean.substring(0, 300)
       });
     }
 
-    // Validar campos obrigatórios
     const requiredFields = ['hook', 'rehook', 'lead', 'body', 'power_ending', 'cta'];
     const missingFields = requiredFields.filter(f => !post[f]);
     
     if (missingFields.length > 0) {
-      console.error('Campos faltando:', missingFields);
+      console.error('❌ Campos faltando:', missingFields);
+      console.log('📊 Post recebido:', post);
       return res.status(500).json({ 
         error: `Resposta incompleta. Faltam: ${missingFields.join(', ')}` 
       });
     }
 
-    console.log('Post gerado com sucesso!');
+    console.log('🎉 Post gerado com sucesso!');
     return res.status(200).json(post);
 
   } catch (error) {
-    console.error('Erro geral:', error);
+    console.error('💥 Erro geral:', error.message);
+    console.error('💥 Stack:', error.stack);
     return res.status(500).json({ 
       error: 'Erro ao gerar conteúdo',
       details: error.message 
