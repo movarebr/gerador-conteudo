@@ -37,6 +37,95 @@ body::before {
     radial-gradient(ellipse 60% 40% at 20% 0%, rgba(201,168,76,0.04) 0%, transparent 60%),
     radial-gradient(ellipse 40% 30% at 80% 100%, rgba(76,175,146,0.04) 0%, transparent 60%);
 }
+
+/* ============ TEMA CLARO ============ */
+body.light-mode {
+  --dark: #F4F0E8;
+  --dark-mid: #FFFFFF;
+  --dark-card: #F8F6F1;
+  --cream: #0f1115;
+  --muted: #6b7280;
+  --border: rgba(0,0,0,0.08);
+}
+body.light-mode::before {
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 0%, rgba(201,168,76,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 80% 100%, rgba(76,175,146,0.06) 0%, transparent 60%);
+}
+body.light-mode header {
+  background: rgba(244,240,232,0.9);
+  backdrop-filter: blur(12px);
+}
+body.light-mode .logo-text { color: #0f1115; }
+body.light-mode .form-card { 
+  background: #fff; 
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04); 
+}
+body.light-mode .nicho-btn { background: #fff; }
+body.light-mode .nicho-btn:hover { background: #f0ede6; }
+body.light-mode .pillar-btn { background: #fff; }
+body.light-mode .pillar-btn:hover { background: #f0ede6; }
+body.light-mode .field textarea, 
+body.light-mode .field input, 
+body.light-mode .field select { 
+  background: #fff; 
+  color: #0f1115;
+  border-color: rgba(0,0,0,0.1);
+}
+body.light-mode .field textarea:focus, 
+body.light-mode .field input:focus, 
+body.light-mode .field select:focus {
+  border-color: rgba(201,168,76,0.6);
+}
+body.light-mode .field select option { background: #fff; color: #0f1115; }
+body.light-mode .field-hint { color: #6b7280; }
+body.light-mode .loading-state { background: #fff; }
+body.light-mode .result-card { 
+  background: #fff; 
+  border-color: rgba(201,168,76,0.3);
+}
+body.light-mode .result-header {
+  background: linear-gradient(135deg, rgba(201,168,76,0.08), transparent);
+}
+body.light-mode .result-section-content { 
+  color: rgba(0,0,0,0.8); 
+}
+body.light-mode .result-section.hook .result-section-content { 
+  color: #0f1115; 
+}
+body.light-mode .result-divider {
+  background: linear-gradient(to right, rgba(201,168,76,0.2), transparent);
+}
+body.light-mode #artPromptCard .result-section-content { 
+  color: rgba(0,0,0,0.8); 
+  background: #F8F6F1;
+}
+body.light-mode .history-item { background: #fff; }
+body.light-mode .history-item:hover { background: #f0ede6; }
+body.light-mode .history-hook { color: #0f1115; }
+body.light-mode .loading-text { color: #6b7280; }
+body.light-mode .toast { 
+  background: #fff; 
+  color: #0f1115;
+  border-color: rgba(201,168,76,0.5);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+body.light-mode .result-pillar-label { color: #6b7280; }
+body.light-mode .header-badge { 
+  color: var(--gold); 
+  border-color: rgba(201,168,76,0.4);
+}
+body.light-mode .nicho-desc { color: #0f1115; }
+body.light-mode .pillar-name { color: #0f1115; }
+body.light-mode .empty-history { color: #6b7280; }
+body.light-mode .history-meta { color: #6b7280; }
+body.light-mode .history-arrow { color: #6b7280; }
+body.light-mode .field label { color: #6b7280; }
+body.light-mode .field textarea::placeholder, 
+body.light-mode .field input::placeholder { color: #9ca3af; }
+body.light-mode .nicho-label { color: #6b7280; }
+body.light-mode .pillar-desc { color: #6b7280; }
+
 header {
   position: relative; z-index: 10;
   padding: 28px 40px;
@@ -121,6 +210,7 @@ main {
   border-radius: 4px;
 }
 .nicho-btn:hover { background: #252b38; }
+body.light-mode .nicho-btn:hover { background: #f0ede6; }
 .nicho-btn.active.b2b {
   border-color: var(--gold);
   background: var(--gold-dim);
@@ -159,6 +249,7 @@ main {
   display: flex; align-items: center; gap: 12px;
 }
 .pillar-btn:hover { background: #252b38; }
+body.light-mode .pillar-btn:hover { background: #f0ede6; }
 .pillar-btn.active { border-color: rgba(201,168,76,0.4); background: var(--gold-dim); }
 .pillar-icon { font-size: 18px; flex-shrink: 0; }
 .pillar-info { flex: 1; }
@@ -350,6 +441,7 @@ main {
   cursor: pointer; transition: background 0.2s;
 }
 .history-item:hover { background: #252b38; }
+body.light-mode .history-item:hover { background: #f0ede6; }
 .history-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 .history-dot.b2b { background: var(--gold); }
 .history-dot.perfumaria { background: var(--red); }
@@ -372,6 +464,26 @@ main {
   transition: all 0.3s; pointer-events: none;
 }
 .toast.show { transform: translateY(0); opacity: 1; }
+
+/* Botão de tema */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold);
+  font-size: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.theme-toggle:hover {
+  background: rgba(201,168,76,0.1);
+  border-color: rgba(201,168,76,0.5);
+}
 
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
@@ -398,7 +510,10 @@ main {
       <div class="logo-sub">Gerador de Conteúdo</div>
     </div>
   </div>
-  <div class="header-badge">IA Estratégica</div>
+  <div style="display: flex; align-items: center; gap: 16px;">
+    <button id="themeToggle" class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">🌙</button>
+    <div class="header-badge">IA Estratégica</div>
+  </div>
 </header>
 
 <main>
@@ -534,6 +649,26 @@ main {
 <div class="toast" id="toast"></div>
 
 <script>
+// ============ THEME TOGGLE ============
+function toggleTheme() {
+  document.body.classList.toggle('light-mode');
+  const btn = document.getElementById('themeToggle');
+  const isLight = document.body.classList.contains('light-mode');
+  btn.textContent = isLight ? '☀️' : '🌙';
+  localStorage.setItem('movare_theme', isLight ? 'light' : 'dark');
+}
+
+// Carregar tema salvo
+(function() {
+  const savedTheme = localStorage.getItem('movare_theme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-mode');
+    const btn = document.getElementById('themeToggle');
+    if (btn) btn.textContent = '☀️';
+  }
+})();
+
+// ============ APP STATE ============
 let state = {
   selectedNicho: 'b2b',
   selectedPillar: 'dor',
