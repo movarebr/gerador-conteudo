@@ -1,5 +1,23 @@
 {
   "version": 2,
-  "buildCommand": null,
-  "outputDirectory": "."
+  "builds": [
+    {
+      "src": "api/generate.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/generate-ideas.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/generate",
+      "dest": "/api/generate.js"
+    },
+    {
+      "src": "/api/generate-ideas",
+      "dest": "/api/generate-ideas.js"
+    }
+  ]
 }
