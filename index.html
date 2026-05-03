@@ -52,35 +52,69 @@ body.light-mode::before {
     radial-gradient(ellipse 60% 40% at 20% 0%, rgba(201,168,76,0.06) 0%, transparent 60%),
     radial-gradient(ellipse 40% 30% at 80% 100%, rgba(76,175,146,0.06) 0%, transparent 60%);
 }
-body.light-mode header { background: rgba(244,240,232,0.9); backdrop-filter: blur(12px); }
+body.light-mode header {
+  background: rgba(244,240,232,0.9);
+  backdrop-filter: blur(12px);
+}
 body.light-mode .logo-text { color: #0f1115; }
-body.light-mode .form-card { background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+body.light-mode .form-card { 
+  background: #fff; 
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04); 
+}
 body.light-mode .nicho-btn { background: #fff; }
 body.light-mode .nicho-btn:hover { background: #f0ede6; }
 body.light-mode .pillar-btn { background: #fff; }
 body.light-mode .pillar-btn:hover { background: #f0ede6; }
 body.light-mode .field textarea, 
 body.light-mode .field input, 
-body.light-mode .field select { background: #fff; color: #0f1115; border-color: rgba(0,0,0,0.1); }
+body.light-mode .field select { 
+  background: #fff; 
+  color: #0f1115;
+  border-color: rgba(0,0,0,0.1);
+}
 body.light-mode .field textarea:focus, 
 body.light-mode .field input:focus, 
-body.light-mode .field select:focus { border-color: rgba(201,168,76,0.6); }
+body.light-mode .field select:focus {
+  border-color: rgba(201,168,76,0.6);
+}
 body.light-mode .field select option { background: #fff; color: #0f1115; }
 body.light-mode .field-hint { color: #6b7280; }
 body.light-mode .loading-state { background: #fff; }
-body.light-mode .result-card { background: #fff; border-color: rgba(201,168,76,0.3); }
-body.light-mode .result-header { background: linear-gradient(135deg, rgba(201,168,76,0.08), transparent); }
-body.light-mode .result-section-content { color: rgba(0,0,0,0.8); }
-body.light-mode .result-section.hook .result-section-content { color: #0f1115; }
-body.light-mode .result-divider { background: linear-gradient(to right, rgba(201,168,76,0.2), transparent); }
-body.light-mode #artPromptCard .result-section-content { color: rgba(0,0,0,0.8); background: #F8F6F1; }
+body.light-mode .result-card { 
+  background: #fff; 
+  border-color: rgba(201,168,76,0.3);
+}
+body.light-mode .result-header {
+  background: linear-gradient(135deg, rgba(201,168,76,0.08), transparent);
+}
+body.light-mode .result-section-content { 
+  color: rgba(0,0,0,0.8); 
+}
+body.light-mode .result-section.hook .result-section-content { 
+  color: #0f1115; 
+}
+body.light-mode .result-divider {
+  background: linear-gradient(to right, rgba(201,168,76,0.2), transparent);
+}
+body.light-mode #artPromptCard .result-section-content { 
+  color: rgba(0,0,0,0.8); 
+  background: #F8F6F1;
+}
 body.light-mode .history-item { background: #fff; }
 body.light-mode .history-item:hover { background: #f0ede6; }
 body.light-mode .history-hook { color: #0f1115; }
 body.light-mode .loading-text { color: #6b7280; }
-body.light-mode .toast { background: #fff; color: #0f1115; border-color: rgba(201,168,76,0.5); box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+body.light-mode .toast { 
+  background: #fff; 
+  color: #0f1115;
+  border-color: rgba(201,168,76,0.5);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
 body.light-mode .result-pillar-label { color: #6b7280; }
-body.light-mode .header-badge { color: var(--gold); border-color: rgba(201,168,76,0.4); }
+body.light-mode .header-badge { 
+  color: var(--gold); 
+  border-color: rgba(201,168,76,0.4);
+}
 body.light-mode .nicho-desc { color: #0f1115; }
 body.light-mode .pillar-name { color: #0f1115; }
 body.light-mode .empty-history { color: #6b7280; }
@@ -91,17 +125,6 @@ body.light-mode .field textarea::placeholder,
 body.light-mode .field input::placeholder { color: #9ca3af; }
 body.light-mode .nicho-label { color: #6b7280; }
 body.light-mode .pillar-desc { color: #6b7280; }
-body.light-mode .mode-tab { background: #fff; color: #0f1115; border-color: rgba(0,0,0,0.1); }
-body.light-mode .mode-tab.active { background: var(--gold-dim); border-color: var(--gold); color: #0f1115; }
-body.light-mode .idea-card { background: #fff; border-color: rgba(0,0,0,0.08); }
-body.light-mode .idea-card:hover { background: #f8f6f1; border-color: rgba(201,168,76,0.3); }
-body.light-mode .idea-title { color: #0f1115; }
-body.light-mode .idea-hook { color: #0f1115; }
-body.light-mode .carousel-slide { background: #fff; border-color: rgba(0,0,0,0.08); }
-body.light-mode .slide-number { background: rgba(201,168,76,0.1); color: #8b6914; }
-body.light-mode .slide-title { color: #0f1115; }
-body.light-mode .slide-text { color: rgba(0,0,0,0.8); }
-body.light-mode .slide-subtext { color: #6b7280; }
 
 header {
   position: relative; z-index: 10;
@@ -111,7 +134,9 @@ header {
   background: rgba(15,17,21,0.8);
   backdrop-filter: blur(12px);
 }
-.logo { display: flex; align-items: center; gap: 12px; }
+.logo {
+  display: flex; align-items: center; gap: 12px;
+}
 .logo-symbol {
   width: 36px; height: 36px;
   border: 1px solid rgba(201,168,76,0.4);
@@ -122,7 +147,8 @@ header {
 .logo-text {
   font-family: 'Cormorant Garamond', serif;
   font-size: 20px; font-weight: 400;
-  letter-spacing: 0.08em; color: var(--cream);
+  letter-spacing: 0.08em;
+  color: var(--cream);
 }
 .logo-sub {
   font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
@@ -139,7 +165,9 @@ main {
   max-width: 900px; margin: 0 auto;
   padding: 60px 24px 100px;
 }
-.page-title { text-align: center; margin-bottom: 56px; }
+.page-title {
+  text-align: center; margin-bottom: 56px;
+}
 .page-title h1 {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(36px, 6vw, 60px);
@@ -147,36 +175,14 @@ main {
   margin-bottom: 14px;
 }
 .page-title h1 em { font-style: italic; color: var(--gold-light); }
-.page-title p { font-size: 15px; color: var(--muted); line-height: 1.7; }
+.page-title p {
+  font-size: 15px; color: var(--muted); line-height: 1.7;
+}
 .title-line {
   width: 60px; height: 1px;
   background: linear-gradient(to right, transparent, var(--gold), transparent);
   margin: 20px auto;
 }
-
-/* ============ MODE TABS ============ */
-.mode-tabs {
-  display: flex; gap: 8px; margin-bottom: 32px;
-  justify-content: center;
-}
-.mode-tab {
-  padding: 10px 24px;
-  border: 1px solid var(--border);
-  background: var(--dark-card);
-  color: var(--muted);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px; letter-spacing: 1px;
-  cursor: pointer; border-radius: 100px;
-  transition: all 0.2s;
-}
-.mode-tab.active {
-  background: var(--gold-dim);
-  border-color: rgba(201,168,76,0.4);
-  color: var(--gold);
-}
-.mode-tab:hover { border-color: rgba(201,168,76,0.3); }
-
-/* ============ MANUAL MODE ============ */
 .form-card {
   background: var(--dark-mid);
   border: 1px solid var(--border);
@@ -205,10 +211,22 @@ main {
 }
 .nicho-btn:hover { background: #252b38; }
 body.light-mode .nicho-btn:hover { background: #f0ede6; }
-.nicho-btn.active.b2b { border-color: var(--gold); background: var(--gold-dim); }
-.nicho-btn.active.perfumaria { border-color: #C0392B; background: var(--red-dim); }
-.nicho-btn.active.mei { border-color: var(--green); background: var(--green-dim); }
-.nicho-dot { width: 8px; height: 8px; border-radius: 50%; margin: 0 auto 10px; }
+.nicho-btn.active.b2b {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+}
+.nicho-btn.active.perfumaria {
+  border-color: #C0392B;
+  background: var(--red-dim);
+}
+.nicho-btn.active.mei {
+  border-color: var(--green);
+  background: var(--green-dim);
+}
+.nicho-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  margin: 0 auto 10px;
+}
 .nicho-dot.b2b { background: var(--gold); }
 .nicho-dot.perfumaria { background: var(--red); }
 .nicho-dot.mei { background: var(--green); }
@@ -259,68 +277,14 @@ body.light-mode .pillar-btn:hover { background: #f0ede6; }
 .field textarea:focus, .field input:focus, .field select:focus {
   border-color: rgba(201,168,76,0.4);
 }
-.field textarea::placeholder, .field input::placeholder { color: var(--muted); }
+.field textarea::placeholder, .field input::placeholder {
+  color: var(--muted);
+}
 .field select option { background: var(--dark-mid); }
-.field-hint { font-size: 12px; color: var(--muted); margin-top: 6px; font-style: italic; }
-
-/* ============ AUTO MODE ============ */
-.auto-card {
-  background: var(--dark-mid);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 44px;
-  margin-bottom: 32px;
-  text-align: center;
+.field-hint {
+  font-size: 12px; color: var(--muted);
+  margin-top: 6px; font-style: italic;
 }
-.auto-icon { font-size: 48px; margin-bottom: 20px; }
-.auto-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; margin-bottom: 12px; }
-.auto-desc { color: var(--muted); font-size: 14px; margin-bottom: 32px; line-height: 1.7; }
-.auto-btn {
-  background: linear-gradient(135deg, var(--gold), #a8852e);
-  color: #0f1115;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px; font-weight: 500;
-  letter-spacing: 2px; text-transform: uppercase;
-  padding: 18px 40px;
-  border: none; border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.auto-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(201,168,76,0.25);
-}
-.auto-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-/* ============ IDEAS GRID ============ */
-.ideas-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 12px; margin-bottom: 32px;
-}
-.idea-card {
-  background: var(--dark-mid);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 24px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.idea-card:hover { border-color: rgba(201,168,76,0.3); background: #1a1f2b; }
-.idea-number {
-  font-size: 10px; letter-spacing: 2px;
-  color: var(--gold); margin-bottom: 8px;
-}
-.idea-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px; color: var(--cream);
-  margin-bottom: 8px;
-}
-.idea-hook {
-  font-size: 13px; color: var(--muted);
-  font-style: italic;
-}
-
-/* ============ CAROUSEL RESULT ============ */
 .generate-btn {
   width: 100%;
   background: linear-gradient(135deg, var(--gold), #a8852e);
@@ -338,9 +302,10 @@ body.light-mode .pillar-btn:hover { background: #f0ede6; }
   transform: translateY(-2px);
   box-shadow: 0 16px 40px rgba(201,168,76,0.25);
 }
-.generate-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.generate-btn:disabled {
+  opacity: 0.5; cursor: not-allowed; transform: none;
+}
 .btn-icon { font-size: 16px; }
-
 .loading-state {
   display: none;
   text-align: center; padding: 60px 40px;
@@ -364,9 +329,7 @@ body.light-mode .pillar-btn:hover { background: #f0ede6; }
   color: var(--muted);
 }
 .loading-sub { font-size: 12px; color: var(--muted); margin-top: 8px; }
-
-/* ============ CAROUSEL DISPLAY ============ */
-.carousel-card {
+.result-card {
   display: none;
   background: var(--dark-mid);
   border: 1px solid rgba(201,168,76,0.2);
@@ -375,22 +338,34 @@ body.light-mode .pillar-btn:hover { background: #f0ede6; }
   margin-bottom: 32px;
   animation: fadeUp 0.5s ease;
 }
-.carousel-card.visible { display: block; }
-.carousel-header {
+.result-card.visible { display: block; }
+.result-header {
   padding: 24px 36px;
   border-bottom: 1px solid var(--border);
   display: flex; align-items: center; justify-content: space-between;
   background: linear-gradient(135deg, rgba(201,168,76,0.05), transparent);
 }
-.carousel-header-left { display: flex; align-items: center; gap: 12px; }
-.carousel-nicho-badge {
+.result-header-left { display: flex; align-items: center; gap: 12px; }
+.result-nicho-badge {
   font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
   padding: 4px 12px; border-radius: 100px;
 }
-.carousel-nicho-badge.b2b { color: var(--gold); border: 1px solid rgba(201,168,76,0.4); background: var(--gold-dim); }
-.carousel-nicho-badge.perfumaria { color: #e85d4a; border: 1px solid rgba(192,57,43,0.4); background: var(--red-dim); }
-.carousel-nicho-badge.mei { color: var(--green); border: 1px solid rgba(76,175,146,0.4); background: var(--green-dim); }
-.carousel-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.result-nicho-badge.b2b {
+  color: var(--gold); border: 1px solid rgba(201,168,76,0.4);
+  background: var(--gold-dim);
+}
+.result-nicho-badge.perfumaria {
+  color: #e85d4a; border: 1px solid rgba(192,57,43,0.4);
+  background: var(--red-dim);
+}
+.result-nicho-badge.mei {
+  color: var(--green); border: 1px solid rgba(76,175,146,0.4);
+  background: var(--green-dim);
+}
+.result-pillar-label {
+  font-size: 12px; color: var(--muted);
+}
+.result-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .action-btn {
   background: transparent;
   border: 1px solid var(--border);
@@ -401,60 +376,53 @@ body.light-mode .pillar-btn:hover { background: #f0ede6; }
   white-space: nowrap;
 }
 .action-btn:hover { border-color: var(--gold); color: var(--gold); }
-.action-btn.primary { border-color: rgba(201,168,76,0.4); color: var(--gold); background: var(--gold-dim); }
+.action-btn.primary {
+  border-color: rgba(201,168,76,0.4);
+  color: var(--gold); background: var(--gold-dim);
+}
 .action-btn.primary:hover { background: rgba(201,168,76,0.25); }
-
-.carousel-body { padding: 24px; }
-.carousel-slide {
-  background: var(--dark-card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 20px 24px;
-  margin-bottom: 8px;
-  transition: all 0.2s;
-}
-.carousel-slide:hover { border-color: rgba(201,168,76,0.2); }
-.slide-header {
-  display: flex; align-items: center; gap: 12px;
-  margin-bottom: 12px;
-}
-.slide-number {
-  background: rgba(201,168,76,0.15);
-  color: var(--gold);
-  font-size: 11px; font-weight: 500;
-  padding: 4px 10px; border-radius: 100px;
-  white-space: nowrap;
-}
-.slide-title {
-  font-size: 12px; letter-spacing: 1px;
-  text-transform: uppercase; color: var(--muted);
-}
-.slide-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px; color: var(--cream);
-  line-height: 1.4; margin-bottom: 6px;
-}
-.slide-subtext {
-  font-size: 13px; color: var(--muted);
-  line-height: 1.6;
-}
-
-/* ============ ART PROMPT SECTION ============ */
-.art-prompt-section {
-  margin-top: 32px;
-}
-.art-prompt-title {
+.result-body { padding: 36px; }
+.result-section { margin-bottom: 28px; }
+.result-section:last-child { margin-bottom: 0; }
+.result-section-label {
   font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-  color: #E0C070; margin-bottom: 16px;
+  color: var(--gold); margin-bottom: 12px;
   display: flex; align-items: center; gap: 8px;
 }
-.art-prompt-title::before {
+.result-section-label::before {
   content: ''; display: block;
-  width: 16px; height: 1px; background: #E0C070;
+  width: 16px; height: 1px; background: var(--gold);
+}
+.result-section-content {
+  font-size: 15px; line-height: 1.85;
+  color: rgba(244,240,232,0.85);
+  white-space: pre-wrap;
+}
+.result-section.hook .result-section-content {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 400;
+  color: var(--cream); line-height: 1.4;
+}
+.result-divider {
+  height: 1px;
+  background: linear-gradient(to right, var(--gold-dim), transparent);
+  margin: 24px 0;
 }
 
-/* ============ HIDDEN ============ */
-.hidden { display: none !important; }
+/* Art Prompt Card */
+#artPromptCard .result-section-content {
+    font-family: 'DM Sans', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(244,240,232,0.9);
+    user-select: all;
+    cursor: text;
+    padding: 8px 0;
+}
+#artPromptCard .result-section-content::selection {
+    background: rgba(201,168,76,0.3);
+    color: #fff;
+}
 
 .history-section { margin-top: 48px; }
 .history-title {
@@ -482,7 +450,10 @@ body.light-mode .history-item:hover { background: #f0ede6; }
 .history-hook { font-size: 13px; color: var(--cream); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .history-meta { font-size: 11px; color: var(--muted); }
 .history-arrow { color: var(--muted); font-size: 14px; }
-.empty-history { text-align: center; padding: 40px; color: var(--muted); font-size: 13px; font-style: italic; }
+.empty-history {
+  text-align: center; padding: 40px;
+  color: var(--muted); font-size: 13px; font-style: italic;
+}
 .toast {
   position: fixed; bottom: 32px; right: 32px; z-index: 1000;
   background: var(--dark-card);
@@ -494,32 +465,38 @@ body.light-mode .history-item:hover { background: #f0ede6; }
 }
 .toast.show { transform: translateY(0); opacity: 1; }
 
+/* Botão de tema */
 .theme-toggle {
   background: transparent;
   border: 1px solid rgba(201,168,76,0.3);
   color: var(--gold);
   font-size: 16px;
-  width: 36px; height: 36px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  cursor: pointer; transition: all 0.2s;
-  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.theme-toggle:hover { background: rgba(201,168,76,0.1); border-color: rgba(201,168,76,0.5); }
+.theme-toggle:hover {
+  background: rgba(201,168,76,0.1);
+  border-color: rgba(201,168,76,0.5);
+}
 
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 640px) {
   header { padding: 20px; }
-  .form-card, .auto-card { padding: 28px 20px; }
+  .form-card { padding: 28px 20px; }
   .nicho-grid { grid-template-columns: 1fr; }
   .pillar-grid { grid-template-columns: 1fr; }
-  .ideas-grid { grid-template-columns: 1fr; }
-  .carousel-header { flex-direction: column; gap: 16px; align-items: flex-start; }
-  .carousel-body { padding: 16px; }
-  .carousel-actions { flex-direction: column; }
+  .result-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .result-body { padding: 24px 20px; }
+  .result-actions { flex-direction: column; }
   .action-btn { text-align: center; }
-  .mode-tabs { flex-direction: column; }
 }
 </style>
 </head>
@@ -541,145 +518,123 @@ body.light-mode .history-item:hover { background: #f0ede6; }
 
 <main>
   <div class="page-title">
-    <h1>Crie carrosséis que<br><em>convertem de verdade</em></h1>
+    <h1>Crie posts que<br><em>convertem de verdade</em></h1>
     <div class="title-line"></div>
-    <p>10 slides prontos para postar<br>com a Anatomia do Post Ideal da MOVARE</p>
+    <p>Descreva o contexto e a IA gera o post completo<br>com a Anatomia do Post Ideal da MOVARE</p>
   </div>
 
-  <!-- ============ MODE TABS ============ -->
-  <div class="mode-tabs">
-    <button class="mode-tab active" onclick="switchMode('auto')" id="tabAuto">🤖 Modo Automático</button>
-    <button class="mode-tab" onclick="switchMode('manual')" id="tabManual">✍️ Modo Manual</button>
-  </div>
-
-  <!-- ============ AUTO MODE ============ -->
-  <div id="autoMode">
-    <div class="auto-card">
-      <div class="auto-icon">🤖</div>
-      <div class="auto-title">Gerador Automático</div>
-      <div class="auto-desc">
-        A IA gera <strong>5 ideias de posts</strong> diferentes para você escolher.<br>
-        Depois cria o carrossel completo de 10 slides + prompt de arte.
-      </div>
-      <button class="auto-btn" id="autoGenerateIdeas" onclick="generateIdeas()">
-        ✦ Gerar Ideias Automaticamente
+  <div class="form-card">
+    <p class="form-section-title">01 · Escolha o nicho</p>
+    <div class="nicho-grid">
+      <button class="nicho-btn b2b active" onclick="selectNicho('b2b', this)">
+        <div class="nicho-dot b2b"></div>
+        <span class="nicho-label">Nicho</span>
+        <span class="nicho-desc">B2B Executivo</span>
+      </button>
+      <button class="nicho-btn perfumaria" onclick="selectNicho('perfumaria', this)">
+        <div class="nicho-dot perfumaria"></div>
+        <span class="nicho-label">Nicho</span>
+        <span class="nicho-desc">Perfumaria</span>
+      </button>
+      <button class="nicho-btn mei" onclick="selectNicho('mei', this)">
+        <div class="nicho-dot mei"></div>
+        <span class="nicho-label">Nicho</span>
+        <span class="nicho-desc">MEI</span>
       </button>
     </div>
 
-    <!-- IDEAS RESULT -->
-    <div id="ideasSection" class="hidden">
-      <p class="form-section-title">Escolha uma ideia para gerar o carrossel</p>
-      <div class="ideas-grid" id="ideasGrid"></div>
-      <button class="generate-btn hidden" id="generateFromIdea" onclick="generateCarouselFromIdea()">
-        <span class="btn-icon">✦</span>
-        Gerar Carrossel Completo
+    <p class="form-section-title">02 · Escolha o pilar</p>
+    <div class="pillar-grid">
+      <button class="pillar-btn active" onclick="selectPillar('dor', this)">
+        <span class="pillar-icon">🎯</span>
+        <div class="pillar-info">
+          <div class="pillar-name">Dor</div>
+          <div class="pillar-desc">Identificação e espelho da realidade</div>
+        </div>
+      </button>
+      <button class="pillar-btn" onclick="selectPillar('educacao', this)">
+        <span class="pillar-icon">📚</span>
+        <div class="pillar-info">
+          <div class="pillar-name">Educação</div>
+          <div class="pillar-desc">Ensina algo valioso pro cliente</div>
+        </div>
+      </button>
+      <button class="pillar-btn" onclick="selectPillar('prova', this)">
+        <span class="pillar-icon">⭐</span>
+        <div class="pillar-info">
+          <div class="pillar-name">Prova Social</div>
+          <div class="pillar-desc">Cases, resultados e depoimentos</div>
+        </div>
+      </button>
+      <button class="pillar-btn" onclick="selectPillar('oferta', this)">
+        <span class="pillar-icon">💼</span>
+        <div class="pillar-info">
+          <div class="pillar-name">Oferta</div>
+          <div class="pillar-desc">Apresenta serviço e converte</div>
+        </div>
       </button>
     </div>
-  </div>
 
-  <!-- ============ MANUAL MODE ============ -->
-  <div id="manualMode" class="hidden">
-    <div class="form-card">
-      <p class="form-section-title">01 · Escolha o nicho</p>
-      <div class="nicho-grid">
-        <button class="nicho-btn b2b active" onclick="selectNicho('b2b', this)">
-          <div class="nicho-dot b2b"></div>
-          <span class="nicho-label">Nicho</span>
-          <span class="nicho-desc">B2B Executivo</span>
-        </button>
-        <button class="nicho-btn perfumaria" onclick="selectNicho('perfumaria', this)">
-          <div class="nicho-dot perfumaria"></div>
-          <span class="nicho-label">Nicho</span>
-          <span class="nicho-desc">Perfumaria</span>
-        </button>
-        <button class="nicho-btn mei" onclick="selectNicho('mei', this)">
-          <div class="nicho-dot mei"></div>
-          <span class="nicho-label">Nicho</span>
-          <span class="nicho-desc">MEI</span>
-        </button>
-      </div>
-
-      <p class="form-section-title">02 · Escolha o pilar</p>
-      <div class="pillar-grid">
-        <button class="pillar-btn active" onclick="selectPillar('dor', this)">
-          <span class="pillar-icon">🎯</span>
-          <div class="pillar-info">
-            <div class="pillar-name">Dor</div>
-            <div class="pillar-desc">Identificação e espelho da realidade</div>
-          </div>
-        </button>
-        <button class="pillar-btn" onclick="selectPillar('educacao', this)">
-          <span class="pillar-icon">📚</span>
-          <div class="pillar-info">
-            <div class="pillar-name">Educação</div>
-            <div class="pillar-desc">Ensina algo valioso pro cliente</div>
-          </div>
-        </button>
-        <button class="pillar-btn" onclick="selectPillar('prova', this)">
-          <span class="pillar-icon">⭐</span>
-          <div class="pillar-info">
-            <div class="pillar-name">Prova Social</div>
-            <div class="pillar-desc">Cases, resultados e depoimentos</div>
-          </div>
-        </button>
-        <button class="pillar-btn" onclick="selectPillar('oferta', this)">
-          <span class="pillar-icon">💼</span>
-          <div class="pillar-info">
-            <div class="pillar-name">Oferta</div>
-            <div class="pillar-desc">Apresenta serviço e converte</div>
-          </div>
-        </button>
-      </div>
-
-      <div class="field">
-        <label>03 · Descreva o contexto</label>
-        <textarea id="contexto" rows="4" placeholder="Ex: Quero falar sobre donos de e-commerce que ainda respondem WhatsApp sozinhos às 23h e estão perdendo venda por isso..."></textarea>
-        <div class="field-hint">Quanto mais específico, melhor o resultado.</div>
-      </div>
-
-      <div class="field">
-        <label>04 · Objeção que quer quebrar <span style="color:var(--muted);font-size:10px;letter-spacing:0">(opcional)</span></label>
-        <input type="text" id="objecao" placeholder="Ex: É caro, já tentei delegar, meu cliente é muito específico...">
-      </div>
-
-      <button class="generate-btn" id="generateBtn" onclick="generatePost()">
-        <span class="btn-icon">✦</span>
-        Gerar Carrossel Completo
-      </button>
+    <div class="field">
+      <label>03 · Tipo de post</label>
+      <select id="tipo">
+        <option value="carrossel">Carrossel</option>
+        <option value="reels">Reels (roteiro)</option>
+        <option value="feed">Post de feed (imagem única)</option>
+        <option value="stories">Stories</option>
+      </select>
     </div>
+
+    <div class="field">
+      <label>04 · Descreva o contexto</label>
+      <textarea id="contexto" rows="5" placeholder="Ex: Quero falar sobre donos de e-commerce que ainda respondem WhatsApp sozinhos às 23h e estão perdendo venda por isso. Tom de case real, sem ser genérico."></textarea>
+      <div class="field-hint">Quanto mais específico, melhor o resultado. Pode incluir situação real, objeção que quer quebrar ou resultado que quer mostrar.</div>
+    </div>
+
+    <div class="field">
+      <label>05 · Objeção que quer quebrar <span style="color:var(--muted);font-size:10px;letter-spacing:0">(opcional)</span></label>
+      <input type="text" id="objecao" placeholder="Ex: É caro, já tentei delegar, meu cliente é muito específico...">
+    </div>
+
+    <button class="generate-btn" id="generateBtn" onclick="generatePost()">
+      <span class="btn-icon">✦</span>
+      Gerar Post Estratégico
+    </button>
   </div>
 
-  <!-- ============ LOADING ============ -->
   <div class="loading-state" id="loadingState">
     <div class="loading-spinner"></div>
-    <div class="loading-text" id="loadingText">Criando seu carrossel...</div>
+    <div class="loading-text">Criando seu post...</div>
     <div class="loading-sub">Aplicando a Anatomia do Post Ideal da MOVARE</div>
   </div>
 
-  <!-- ============ CAROUSEL RESULT ============ -->
-  <div class="carousel-card" id="carouselCard">
-    <div class="carousel-header">
-      <div class="carousel-header-left">
-        <span class="carousel-nicho-badge" id="carouselNichoBadge"></span>
-        <span style="font-size:12px;color:var(--muted);" id="carouselPillarLabel"></span>
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <div class="result-header-left">
+        <span class="result-nicho-badge" id="resultNichoBadge"></span>
+        <span class="result-pillar-label" id="resultPillarLabel"></span>
       </div>
-      <div class="carousel-actions">
-        <button class="action-btn" onclick="regenerateCurrent()">↻ Regerar</button>
-        <button class="action-btn primary" onclick="copyCarousel()">📋 Copiar Carrossel</button>
+      <div class="result-actions">
+        <button class="action-btn" onclick="generatePost()">↻ Regerar</button>
+        <button class="action-btn primary" onclick="copyFullPost()">Copiar tudo</button>
         <button class="action-btn" onclick="generateArtPrompt()" style="border-color: rgba(224,192,112,0.3); color: #E0C070;">🎨 Prompt de Arte</button>
       </div>
     </div>
-    <div class="carousel-body" id="carouselBody"></div>
-    
-    <!-- ART PROMPT EMBEDDED -->
-    <div id="artPromptEmbedded" class="hidden" style="padding: 0 24px 24px;">
-      <div class="art-prompt-section">
-        <div class="art-prompt-title">🎨 Prompt de Arte para este Carrossel</div>
-        <div style="background:var(--dark-card);border:1px solid var(--border);border-radius:8px;padding:20px;">
-          <div style="font-family:'DM Sans',monospace;font-size:13px;color:rgba(244,240,232,0.9);line-height:1.8;user-select:all;cursor:text;" id="artPromptText"></div>
-        </div>
-        <button class="action-btn primary" onclick="copyArtPrompt()" style="margin-top:12px;">📋 Copiar Prompt de Arte</button>
+    <div class="result-body" id="resultBody"></div>
+  </div>
+
+  <!-- ART PROMPT CARD -->
+  <div class="result-card" id="artPromptCard" style="display: none; border-color: rgba(224,192,112,0.3);">
+    <div class="result-header" style="background: linear-gradient(135deg, rgba(224,192,112,0.08), transparent);">
+      <div class="result-header-left">
+        <span style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #E0C070;">🎨 Prompt de Arte</span>
       </div>
+      <div class="result-actions">
+        <button class="action-btn primary" onclick="copyArtPrompt()">📋 Copiar prompt</button>
+      </div>
+    </div>
+    <div class="result-body" style="background: #15181f;">
+      <div class="result-section-content" id="artPromptContent" style="font-family: 'DM Sans', monospace; font-size: 13px; color: rgba(244,240,232,0.9); line-height: 1.8; user-select: all; cursor: text;"></div>
     </div>
   </div>
 
@@ -702,6 +657,8 @@ function toggleTheme() {
   btn.textContent = isLight ? '☀️' : '🌙';
   localStorage.setItem('movare_theme', isLight ? 'light' : 'dark');
 }
+
+// Carregar tema salvo
 (function() {
   const savedTheme = localStorage.getItem('movare_theme');
   if (savedTheme === 'light') {
@@ -711,26 +668,11 @@ function toggleTheme() {
   }
 })();
 
-// ============ MODE SWITCHING ============
-let currentMode = 'auto';
-
-function switchMode(mode) {
-  currentMode = mode;
-  document.getElementById('tabAuto').classList.toggle('active', mode === 'auto');
-  document.getElementById('tabManual').classList.toggle('active', mode === 'manual');
-  document.getElementById('autoMode').classList.toggle('hidden', mode !== 'auto');
-  document.getElementById('manualMode').classList.toggle('hidden', mode !== 'manual');
-  document.getElementById('carouselCard').classList.remove('visible');
-  document.getElementById('ideasSection').classList.add('hidden');
-}
-
-// ============ STATE ============
+// ============ APP STATE ============
 let state = {
   selectedNicho: 'b2b',
   selectedPillar: 'dor',
-  currentCarousel: null,
-  currentIdea: null,
-  ideas: [],
+  currentPost: null,
   sessionHistory: []
 };
 
@@ -751,163 +693,39 @@ function selectPillar(pillar, btn) {
 
 function showToast(msg, type = 'success') {
   const t = document.getElementById('toast');
+  const colors = {
+    success: 'rgba(76,175,146,0.9)',
+    error: 'rgba(229,62,62,0.9)',
+    warning: 'rgba(201,168,76,0.9)'
+  };
   t.textContent = msg;
-  t.style.borderColor = type === 'success' ? 'rgba(76,175,146,0.9)' : type === 'error' ? 'rgba(229,62,62,0.9)' : 'rgba(201,168,76,0.9)';
+  t.style.borderColor = colors[type] || colors.success;
   t.classList.add('show');
   clearTimeout(t._timeout);
   t._timeout = setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-function showLoading(text = 'Criando seu carrossel...') {
-  document.getElementById('loadingText').textContent = text;
-  document.getElementById('loadingState').classList.add('visible');
-  document.getElementById('carouselCard').classList.remove('visible');
-  document.getElementById('artPromptEmbedded').classList.add('hidden');
-}
-
-function hideLoading() {
-  document.getElementById('loadingState').classList.remove('visible');
-}
-
-// ============ AUTO MODE: GENERATE IDEAS ============
-async function generateIdeas() {
-  const btn = document.getElementById('autoGenerateIdeas');
-  btn.disabled = true;
-  btn.textContent = '⏳ Gerando ideias...';
-  showLoading('Gerando ideias de posts...');
-
-  try {
-    const response = await fetch('/api/generate-ideas', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({})
-    });
-
-    if (!response.ok) throw new Error(`Erro ${response.status}`);
-    
-    const data = await response.json();
-    state.ideas = data.ideas || [];
-    
-    if (state.ideas.length === 0) {
-      // Fallback: generate with default prompts
-      state.ideas = generateFallbackIdeas();
-    }
-    
-    renderIdeas();
-    document.getElementById('ideasSection').classList.remove('hidden');
-    document.getElementById('ideasSection').scrollIntoView({ behavior: 'smooth' });
-    showToast(`✨ ${state.ideas.length} ideias geradas!`);
-  } catch (err) {
-    console.error('Erro:', err);
-    state.ideas = generateFallbackIdeas();
-    renderIdeas();
-    document.getElementById('ideasSection').classList.remove('hidden');
-    showToast('⚠️ Usando ideias de exemplo (API indisponível)', 'warning');
-  } finally {
-    btn.disabled = false;
-    btn.textContent = '✦ Gerar Ideias Automaticamente';
-    hideLoading();
-  }
-}
-
-function generateFallbackIdeas() {
-  const allIdeas = [
-    { nicho: 'perfumaria', pillar: 'dor', title: 'Sua marca não pode depender só de você', hook: 'Perfumarias que crescem sem perder a essência.', contexto: 'Dona de perfumaria que responde WhatsApp sozinha e está perdendo venda por falta de atendimento estruturado.' },
-    { nicho: 'b2b', pillar: 'educacao', title: 'O que ninguém te conta sobre delegar', hook: 'Delegar não é largar — é multiplicar.', contexto: 'Empreendedor B2B que não consegue sair da operação e escalar o negócio.' },
-    { nicho: 'mei', pillar: 'oferta', title: 'Do informal ao profissional', hook: 'Seu negócio merece mais que um WhatsApp bagunçado.', contexto: 'MEI que quer profissionalizar o atendimento mas acha que é caro.' },
-    { nicho: 'perfumaria', pillar: 'prova', title: '+80 perfumarias já confiam na MOVARE', hook: 'Quem entende de fragrância, entende de atendimento.', contexto: 'Cases reais de perfumarias que cresceram 40% após terceirizar atendimento.' },
-    { nicho: 'b2b', pillar: 'dor', title: 'Responder cliente às 23h não é estratégia', hook: 'Enquanto você responde, seu concorrente escala.', contexto: 'Empresário que confunde disponibilidade com eficiência.' },
-    { nicho: 'mei', pillar: 'educacao', title: 'Os 3 pilares do atendimento que vende', hook: 'Atender bem não é só responder rápido.', contexto: 'MEI que quer aprender a estruturar o atendimento para vender mais.' },
-  ];
-  
-  // Randomize and pick 5
-  return allIdeas.sort(() => Math.random() - 0.5).slice(0, 5);
-}
-
-function renderIdeas() {
-  const grid = document.getElementById('ideasGrid');
-  grid.innerHTML = state.ideas.map((idea, i) => `
-    <div class="idea-card" onclick="selectIdea(${i})" id="ideaCard${i}">
-      <div class="idea-number">IDEIA ${i + 1} · ${nichoLabels[idea.nicho] || 'Geral'}</div>
-      <div class="idea-title">${escHtml(idea.title || 'Ideia sem título')}</div>
-      <div class="idea-hook">"${escHtml(idea.hook || '')}"</div>
-    </div>
-  `).join('');
-  
-  document.getElementById('generateFromIdea').classList.add('hidden');
-  state.currentIdea = null;
-}
-
-function selectIdea(index) {
-  state.currentIdea = state.ideas[index];
-  document.querySelectorAll('.idea-card').forEach(c => c.style.borderColor = '');
-  document.getElementById(`ideaCard${index}`).style.borderColor = 'rgba(201,168,76,0.5)';
-  document.getElementById('generateFromIdea').classList.remove('hidden');
-  document.getElementById('generateFromIdea').scrollIntoView({ behavior: 'smooth' });
-  showToast(`Ideia ${index + 1} selecionada! Clique em "Gerar Carrossel"`);
-}
-
-// ============ GENERATE CAROUSEL FROM IDEA ============
-async function generateCarouselFromIdea() {
-  if (!state.currentIdea) {
-    showToast('Selecione uma ideia primeiro', 'warning');
-    return;
-  }
-
-  const idea = state.currentIdea;
-  state.selectedNicho = idea.nicho || 'b2b';
-  state.selectedPillar = idea.pillar || 'dor';
-
-  document.getElementById('carouselCard').classList.remove('visible');
-  showLoading('Criando carrossel de 10 slides...');
-
-  try {
-    const response = await fetch('/api/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contexto: idea.contexto || idea.title,
-        objecao: '',
-        tipo: 'carrossel',
-        nicho: idea.nicho || 'b2b',
-        pillar: idea.pillar || 'dor',
-        format: 'carousel-10-slides',
-        hook: idea.hook || ''
-      })
-    });
-
-    if (!response.ok) throw new Error(`Erro ${response.status}`);
-    
-    const post = await response.json();
-    state.currentCarousel = { ...post, nicho: state.selectedNicho, pillar: state.selectedPillar };
-    renderCarousel(state.currentCarousel);
-    addToHistory(state.currentCarousel, idea.contexto || idea.title);
-    showToast('✨ Carrossel de 10 slides gerado!');
-  } catch (err) {
-    console.error('Erro:', err);
-    state.currentCarousel = generateFallbackCarousel(idea);
-    renderCarousel(state.currentCarousel);
-    addToHistory(state.currentCarousel, idea.contexto || idea.title);
-    showToast('⚠️ Usando carrossel de exemplo (API indisponível)', 'warning');
-  } finally {
-    hideLoading();
-  }
-}
-
-// ============ MANUAL MODE: GENERATE POST ============
 async function generatePost() {
   const contexto = document.getElementById('contexto').value.trim();
   const objecao = document.getElementById('objecao').value.trim();
+  const tipo = document.getElementById('tipo').value;
 
-  if (!contexto || contexto.length < 20) {
-    showToast('Descreva o contexto com pelo menos 20 caracteres.', 'warning');
+  if (!contexto) {
+    showToast('Descreva o contexto do post antes de gerar.', 'warning');
+    return;
+  }
+
+  if (contexto.length < 20) {
+    showToast('Contexto muito curto. Descreva com mais detalhes.', 'warning');
     return;
   }
 
   const btn = document.getElementById('generateBtn');
   btn.disabled = true;
   btn.innerHTML = '<span class="btn-icon">⏳</span> Gerando...';
-  showLoading();
+  document.getElementById('loadingState').classList.add('visible');
+  document.getElementById('resultCard').classList.remove('visible');
+  document.getElementById('artPromptCard').style.display = 'none';
 
   try {
     const response = await fetch('/api/generate', {
@@ -916,223 +734,199 @@ async function generatePost() {
       body: JSON.stringify({
         contexto,
         objecao,
-        tipo: 'carrossel',
+        tipo,
         nicho: state.selectedNicho,
-        pillar: state.selectedPillar,
-        format: 'carousel-10-slides'
+        pillar: state.selectedPillar
       })
     });
 
-    if (!response.ok) throw new Error(`Erro ${response.status}`);
-    
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || `Erro ${response.status}`);
+    }
+
     const post = await response.json();
-    state.currentCarousel = { ...post, nicho: state.selectedNicho, pillar: state.selectedPillar };
-    renderCarousel(state.currentCarousel);
-    addToHistory(state.currentCarousel, contexto);
-    showToast('✨ Carrossel de 10 slides gerado!');
+
+    if (!post.hook || !post.body) {
+      throw new Error('Resposta incompleta da IA');
+    }
+
+    state.currentPost = { ...post, nicho: state.selectedNicho, pillar: state.selectedPillar, tipo };
+    renderResult(state.currentPost);
+    addToHistory(state.currentPost, contexto);
+    showToast('✨ Post gerado com sucesso!');
+
   } catch (err) {
     console.error('Erro:', err);
-    state.currentCarousel = generateFallbackCarousel({ nicho: state.selectedNicho, pillar: state.selectedPillar, contexto });
-    renderCarousel(state.currentCarousel);
-    addToHistory(state.currentCarousel, contexto);
-    showToast('⚠️ Usando carrossel de exemplo (API indisponível)', 'warning');
+    let msg = 'Erro ao gerar. Tente novamente.';
+    if (err.message.includes('Failed to fetch')) msg = '🔌 Erro de conexão. Verifique sua internet.';
+    if (err.message.includes('API key')) msg = '⚠️ Erro na configuração do servidor.';
+    showToast(msg, 'error');
   } finally {
     btn.disabled = false;
-    btn.innerHTML = '<span class="btn-icon">✦</span> Gerar Carrossel Completo';
-    hideLoading();
+    btn.innerHTML = '<span class="btn-icon">✦</span> Gerar Post Estratégico';
+    document.getElementById('loadingState').classList.remove('visible');
   }
 }
 
-function regenerateCurrent() {
-  if (currentMode === 'auto' && state.currentIdea) {
-    generateCarouselFromIdea();
-  } else {
-    generatePost();
-  }
+function renderResult(post) {
+  const badge = document.getElementById('resultNichoBadge');
+  badge.textContent = nichoLabels[post.nicho];
+  badge.className = `result-nicho-badge ${post.nicho}`;
+  document.getElementById('resultPillarLabel').textContent = pillarLabels[post.pillar];
+
+  const sections = [
+    { className: 'hook', label: 'Hook · Capa do post', content: post.hook },
+    { className: '', label: 'Rehook', content: post.rehook },
+    { className: '', label: 'Lead', content: post.lead },
+    { className: '', label: 'Body', content: post.body },
+    { className: '', label: 'Power-ending', content: post.power_ending },
+    { className: '', label: 'CTA', content: post.cta }
+  ];
+
+  const body = document.getElementById('resultBody');
+  body.innerHTML = sections.map((section, i) => `
+    ${i > 0 ? '<div class="result-divider"></div>' : ''}
+    <div class="result-section ${section.className}">
+      <div class="result-section-label">${section.label}</div>
+      <div class="result-section-content">${escHtml(section.content)}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('resultCard').classList.add('visible');
+  document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// ============ FALLBACK CAROUSEL GENERATOR ============
-function generateFallbackCarousel(idea) {
-  const nicho = idea.nicho || 'b2b';
-  const hook = idea.hook || 'Sua marca não pode depender só de você.';
-  
-  const slidesByNicho = {
-    perfumaria: [
-      { title: 'CAPA', text: hook, subtext: '' },
-      { title: 'LEAD', text: 'Você cuida da fragrância. A MOVARE cuida de tudo o que vem depois.', subtext: 'Da primeira mensagem à entrega — sua marca intacta em cada etapa.' },
-      { title: 'CORPO 1', text: 'Atender cliente de perfumaria não é como atender qualquer outro cliente.', subtext: 'Ele quer ser consultado, não só respondido. Quer sentir que a marca o conhece — mesmo no WhatsApp.' },
-      { title: 'CORPO 2', text: 'Por isso a MOVARE se especializou em perfumarias.', subtext: 'Nossa equipe é treinada em famílias olfativas, comportamento do consumidor e linguagem sensorial da sua marca.' },
-      { title: 'CORPO 3', text: 'Atendimento humanizado. Relacionamento pós-venda. Logística e muito mais.', subtext: 'Cada ponto de contato do seu cliente com a marca passa pela MOVARE com o mesmo cuidado que você teria.' },
-      { title: 'CORPO 4', text: '+6 anos de mercado. +80 clientes atendidos.', subtext: 'Não somos generalistas. Conhecemos as particularidades do seu nicho porque escolhemos nos especializar nele.' },
-      { title: 'RESULTADO', text: 'Enquanto a MOVARE cuida da operação, você cria fragrâncias que encantam.', subtext: 'Seus clientes bem atendidos. Sua marca preservada. Seu tempo de volta.' },
-      { title: 'DEPOIMENTO', text: '"A Movare organizou meu atendimento e hoje tenho tempo pra pensar no futuro."', subtext: '— Glanz Natural Beauty ★★★★★' },
-      { title: 'PARA QUEM É', text: 'Este serviço é pra você se…', subtext: '◆ Responde WhatsApp sozinha\n◆ Quer crescer sem perder o padrão\n◆ Sabe que cada cliente merece mais' },
-      { title: 'CTA', text: 'Deixe a MOVARE cuidar da jornada do seu cliente.', subtext: 'Link na bio · movare.br' }
-    ],
-    b2b: [
-      { title: 'CAPA', text: hook, subtext: '' },
-      { title: 'LEAD', text: 'Enquanto você opera, seu negócio não escala.', subtext: 'A MOVARE assume a operação para você focar no que realmente importa.' },
-      { title: 'CORPO 1', text: 'O maior gargalo do B2B não é falta de cliente — é excesso de fundador.', subtext: 'Tudo passa por você. E isso está limitando seu crescimento.' },
-      { title: 'CORPO 2', text: 'A MOVARE entende a complexidade do B2B.', subtext: 'Nossa equipe é treinada em negociação consultiva, follow-up estratégico e personalização.' },
-      { title: 'CORPO 3', text: 'Pré-vendas. Atendimento. Pós-vendas. Tudo integrado.', subtext: 'Seu cliente recebe atenção em cada etapa — sem você precisar estar presente.' },
-      { title: 'CORPO 4', text: '+6 anos de mercado. +80 empresas atendidas.', subtext: 'Cases de empresas que cresceram 40% após terceirizar a operação com a MOVARE.' },
-      { title: 'RESULTADO', text: 'Você fecha contratos maiores. A MOVARE cuida do resto.', subtext: 'Seu time focado em estratégia. A operação rodando sem depender de você.' },
-      { title: 'DEPOIMENTO', text: '"A Movare me devolveu 20h por semana. Agora eu escalo de verdade."', subtext: '— Diretor Comercial · Tech Solutions ★★★★★' },
-      { title: 'PARA QUEM É', text: 'Este serviço é pra você se…', subtext: '◆ Está sobrecarregado com operação\n◆ Quer escalar sem perder qualidade\n◆ Sabe que seu tempo vale mais' },
-      { title: 'CTA', text: 'Chegou a hora de tirar você da operação.', subtext: 'Link na bio · movare.br' }
-    ],
-    mei: [
-      { title: 'CAPA', text: hook, subtext: '' },
-      { title: 'LEAD', text: 'Seu negócio merece atendimento profissional — sem custar uma fortuna.', subtext: 'A MOVARE tem planos que cabem no seu bolso e entregam resultado.' },
-      { title: 'CORPO 1', text: 'Você não precisa responder tudo sozinho.', subtext: 'Tem cliente esperando resposta enquanto você faz entrega. Isso não é sustentável.' },
-      { title: 'CORPO 2', text: 'A MOVARE foi feita para quem está crescendo.', subtext: 'Atendimento humanizado, personalizado e com preço justo para o seu momento.' },
-      { title: 'CORPO 3', text: 'WhatsApp organizado. Respostas rápidas. Cliente feliz.', subtext: 'Você foca no seu produto e a MOVARE garante que nenhum cliente fique sem resposta.' },
-      { title: 'CORPO 4', text: '+6 anos de mercado. Planos a partir de R$XX.', subtext: 'Sem contratos longos. Sem letras miúdas. Resultado desde o primeiro mês.' },
-      { title: 'RESULTADO', text: 'Você ganha tempo. Seu cliente ganha atenção.', subtext: 'E o melhor: seu negócio fica com cara de grande, mesmo sendo pequeno.' },
-      { title: 'DEPOIMENTO', text: '"Com a Movare, meu atendimento ficou profissional e eu consigo focar nas vendas."', subtext: '— MEI · E-commerce de moda ★★★★★' },
-      { title: 'PARA QUEM É', text: 'Este serviço é pra você se…', subtext: '◆ Responde tudo sozinho\n◆ Quer profissionalizar o atendimento\n◆ Acha que terceirizar é caro' },
-      { title: 'CTA', text: 'Comece a atender como gente grande.', subtext: 'Link na bio · movare.br' }
-    ]
-  };
-
-  const slides = slidesByNicho[nicho] || slidesByNicho['b2b'];
-  
-  return {
-    hook: hook,
-    slides: slides,
-    nicho: nicho,
-    pillar: idea.pillar || 'dor'
-  };
+function escHtml(str) {
+  if (!str) return '';
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
 }
 
-// ============ RENDER CAROUSEL ============
-function renderCarousel(carousel) {
-  const badge = document.getElementById('carouselNichoBadge');
-  badge.textContent = nichoLabels[carousel.nicho] || 'Geral';
-  badge.className = `carousel-nicho-badge ${carousel.nicho}`;
-  document.getElementById('carouselPillarLabel').textContent = pillarLabels[carousel.pillar] || '';
-
-  const body = document.getElementById('carouselBody');
+function copyFullPost() {
+  if (!state.currentPost) return;
+  const text = [
+    state.currentPost.hook || '',
+    '',
+    state.currentPost.rehook || '',
+    '',
+    state.currentPost.lead || '',
+    '',
+    state.currentPost.body || '',
+    '',
+    state.currentPost.power_ending || '',
+    '',
+    state.currentPost.cta || ''
+  ].join('\n');
   
-  if (carousel.slides && carousel.slides.length > 0) {
-    body.innerHTML = carousel.slides.map((slide, i) => `
-      <div class="carousel-slide">
-        <div class="slide-header">
-          <span class="slide-number">SLIDE ${i + 1}</span>
-          <span class="slide-title">${escHtml(slide.title || '')}</span>
-        </div>
-        <div class="slide-text">${escHtml(slide.text || '')}</div>
-        ${slide.subtext ? `<div class="slide-subtext">${escHtml(slide.subtext).replace(/\n/g, '<br>')}</div>` : ''}
-      </div>
-    `).join('');
-  } else {
-    // Legacy format fallback
-    const parts = [
-      { title: 'CAPA', text: carousel.hook },
-      { title: 'LEAD', text: carousel.lead },
-      { title: 'CORPO', text: carousel.body },
-      { title: 'RESULTADO', text: carousel.power_ending },
-      { title: 'CTA', text: carousel.cta }
-    ];
-    body.innerHTML = parts.filter(p => p.text).map((p, i) => `
-      <div class="carousel-slide">
-        <div class="slide-header">
-          <span class="slide-number">SLIDE ${i + 1}</span>
-          <span class="slide-title">${p.title}</span>
-        </div>
-        <div class="slide-text">${escHtml(p.text)}</div>
-      </div>
-    `).join('');
-  }
-
-  document.getElementById('carouselCard').classList.add('visible');
-  document.getElementById('artPromptEmbedded').classList.add('hidden');
-  document.getElementById('carouselCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('✨ Post completo copiado!');
+  }).catch(() => {
+    showToast('Erro ao copiar', 'error');
+  });
 }
 
-// ============ ART PROMPT ============
+// ============ ART PROMPT GENERATOR ============
+
 function generateArtPrompt() {
-  if (!state.currentCarousel) {
-    showToast('Gere um carrossel primeiro', 'warning');
-    return;
-  }
+    if (!state.currentPost || !state.currentPost.hook) {
+        showToast('Gere um post primeiro para criar o prompt de arte', 'warning');
+        return;
+    }
 
-  const nicho = state.currentCarousel.nicho || state.selectedNicho;
-  const pillar = state.currentCarousel.pillar || state.selectedPillar;
+    const nicho = state.selectedNicho;
+    const pillar = state.selectedPillar;
 
-  const palettes = {
-    b2b: 'black #111418, gold #C9A84C, cream #F4F0E8',
-    perfumaria: 'black #111418, deep red #8B1A1A, golden mist',
-    mei: 'black #111418, green #4CAF92, cream #F4F0E8'
-  };
+    const palettes = {
+        b2b: 'black #111418, gold #C9A84C, cream #F4F0E8',
+        perfumaria: 'black #111418, deep red #8B1A1A, golden mist',
+        mei: 'black #111418, green #4CAF92, cream #F4F0E8'
+    };
 
-  const visualStyles = {
-    b2b: 'premium office setting, overhead view of a desk with laptop, corporate elements, dramatic side lighting',
-    perfumaria: 'perfume bottle with colorful smoke, flower petals, cinematic lighting, abstract sensory background',
-    mei: 'entrepreneur working in a cozy home office, smartphone in hand, natural light, warm and welcoming atmosphere'
-  };
+    const visualStyles = {
+        b2b: 'premium office setting, overhead view of a desk with laptop, corporate elements, dramatic side lighting',
+        perfumaria: 'perfume bottle with colorful smoke, flower petals, cinematic lighting, abstract sensory background',
+        mei: 'entrepreneur working in a cozy home office, smartphone in hand, natural light, warm and welcoming atmosphere'
+    };
 
-  const moods = {
-    dor: 'moody lighting, heavy tone, high contrast shadows',
-    educacao: 'clean lighting, informative tone, generous negative space',
-    prova: 'warm celebration lighting, subtle triumph atmosphere',
-    oferta: 'premium lighting, product spotlight, centered composition'
-  };
+    const moods = {
+        dor: 'moody lighting, heavy tone, high contrast shadows',
+        educacao: 'clean lighting, informative tone, generous negative space',
+        prova: 'warm celebration lighting, subtle triumph atmosphere',
+        oferta: 'premium lighting, product spotlight, centered composition'
+    };
 
-  const artPrompt = `Instagram carousel post design, 10 slides, ${visualStyles[nicho] || visualStyles['b2b']}, ${palettes[nicho] || palettes['b2b']}, ${moods[pillar] || moods['dor']}, dark luxury aesthetic, cinematic lighting, high contrast, square format 1080x1080px, no text in the image, no people faces, photorealistic, cohesive color story across all slides`;
+    const artPrompt = `${visualStyles[nicho]}, ${palettes[nicho]}, ${moods[pillar]}, dark luxury aesthetic, cinematic lighting, high contrast, leave space on the left third for text overlay, square format 1080x1080px, Instagram post, no text in the image, no people faces, photorealistic`;
 
-  document.getElementById('artPromptText').textContent = artPrompt;
-  document.getElementById('artPromptEmbedded').classList.remove('hidden');
-  document.getElementById('artPromptEmbedded').scrollIntoView({ behavior: 'smooth' });
-  showToast('🎨 Prompt de arte gerado!');
+    const artPromptCard = document.getElementById('artPromptCard');
+    const artPromptContent = document.getElementById('artPromptContent');
+    
+    artPromptContent.textContent = artPrompt;
+    artPromptCard.style.display = 'block';
+    artPromptCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    artPromptCard.style.animation = 'none';
+    artPromptCard.offsetHeight;
+    artPromptCard.style.animation = 'fadeUp 0.5s ease';
 }
 
 function copyArtPrompt() {
-  const text = document.getElementById('artPromptText').textContent;
-  if (!text) { showToast('Gere o prompt primeiro', 'warning'); return; }
-  navigator.clipboard.writeText(text).then(() => showToast('🎨 Prompt copiado!'));
-}
+    const promptText = document.getElementById('artPromptContent').textContent;
+    
+    if (!promptText) {
+        showToast('Nenhum prompt para copiar', 'warning');
+        return;
+    }
 
-function copyCarousel() {
-  if (!state.currentCarousel) return;
-  
-  let text = '';
-  if (state.currentCarousel.slides) {
-    text = state.currentCarousel.slides.map((s, i) => 
-      `SLIDE ${i + 1} — ${s.title}\n${s.text}\n${s.subtext ? s.subtext + '\n' : ''}`
-    ).join('\n---\n\n');
-  } else {
-    text = `${state.currentCarousel.hook || ''}\n\n---\n\n${state.currentCarousel.lead || ''}\n\n---\n\n${state.currentCarousel.body || ''}\n\n---\n\n${state.currentCarousel.cta || ''}`;
-  }
-  
-  navigator.clipboard.writeText(text).then(() => showToast('📋 Carrossel copiado!'));
+    navigator.clipboard.writeText(promptText).then(() => {
+        showToast('🎨 Prompt de arte copiado!');
+        const btn = document.querySelector('#artPromptCard .action-btn.primary');
+        const originalText = btn.textContent;
+        btn.textContent = '✅ Copiado!';
+        setTimeout(() => {
+            btn.textContent = originalText;
+        }, 2000);
+    }).catch(() => {
+        showToast('Erro ao copiar', 'error');
+    });
 }
 
 // ============ HISTORY ============
-function addToHistory(carousel, contexto) {
+
+function addToHistory(post, contexto) {
   state.sessionHistory.unshift({
-    carousel,
+    post,
     contexto,
-    nichoLabel: nichoLabels[carousel.nicho] || 'Geral',
+    nichoLabel: nichoLabels[post.nicho],
+    pillarLabel: pillarLabels[post.pillar],
     timestamp: new Date().toISOString()
   });
-  if (state.sessionHistory.length > 15) state.sessionHistory = state.sessionHistory.slice(0, 15);
-  try { localStorage.setItem('movare_history', JSON.stringify(state.sessionHistory)); } catch (e) {}
+
+  if (state.sessionHistory.length > 15) {
+    state.sessionHistory = state.sessionHistory.slice(0, 15);
+  }
+
+  try {
+    localStorage.setItem('movare_history', JSON.stringify(state.sessionHistory));
+  } catch (e) {}
+
   renderHistory();
 }
 
 function renderHistory() {
   const list = document.getElementById('historyList');
+  
   if (state.sessionHistory.length === 0) {
-    list.innerHTML = '<div class="empty-history">Nenhum post gerado ainda.</div>';
+    list.innerHTML = '<div class="empty-history">Nenhum post gerado ainda. Seu histórico fica salvo aqui ✨</div>';
     return;
   }
+
   list.innerHTML = state.sessionHistory.map((item, i) => `
-    <div class="history-item" onclick="restoreHistory(${i})">
-      <div class="history-dot ${item.carousel.nicho || 'b2b'}"></div>
+    <div class="history-item" onclick="restoreHistory(${i})" style="cursor:pointer;">
+      <div class="history-dot ${item.post.nicho}"></div>
       <div class="history-info">
-        <div class="history-hook">${escHtml(item.carousel.hook || 'Sem título')}</div>
-        <div class="history-meta">${item.nichoLabel} · ${formatDate(item.timestamp)}</div>
+        <div class="history-hook">${escHtml(item.post.hook || 'Sem hook')}</div>
+        <div class="history-meta">${item.nichoLabel} · ${item.pillarLabel} · ${item.post.tipo} · ${formatDate(item.timestamp)}</div>
       </div>
       <span class="history-arrow">›</span>
     </div>
@@ -1141,9 +935,9 @@ function renderHistory() {
 
 function restoreHistory(i) {
   if (i >= 0 && i < state.sessionHistory.length) {
-    state.currentCarousel = state.sessionHistory[i].carousel;
-    renderCarousel(state.currentCarousel);
-    document.getElementById('artPromptEmbedded').classList.add('hidden');
+    state.currentPost = state.sessionHistory[i].post;
+    renderResult(state.currentPost);
+    document.getElementById('artPromptCard').style.display = 'none';
     showToast('📜 Post restaurado!');
   }
 }
@@ -1155,6 +949,7 @@ function formatDate(isoString) {
   const minutes = Math.floor(diff / 60000);
   const hours = Math.floor(diff / 3600000);
   const days = Math.floor(diff / 86400000);
+
   if (minutes < 1) return 'Agora';
   if (minutes < 60) return `Há ${minutes}min`;
   if (hours < 24) return `Há ${hours}h`;
@@ -1162,18 +957,16 @@ function formatDate(isoString) {
   return date.toLocaleDateString('pt-BR');
 }
 
-function escHtml(str) {
-  if (!str) return '';
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
-}
-
 // Carregar histórico
 try {
   const saved = localStorage.getItem('movare_history');
-  if (saved) { state.sessionHistory = JSON.parse(saved); renderHistory(); }
-} catch (e) { state.sessionHistory = []; }
+  if (saved) {
+    state.sessionHistory = JSON.parse(saved);
+    renderHistory();
+  }
+} catch (e) {
+  state.sessionHistory = [];
+}
 </script>
 </body>
 </html>
