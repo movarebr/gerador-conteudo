@@ -1,59 +1,10 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+import Groq from "groq-sdk";
 
-// Configuração da API Gemini
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-
-// Configurações por nicho
-const nichoConfig = {
-  b2b: {
-    nome: "B2B Executivo",
-    tom: "profissional e consultivo",
-    audiencia: "empresários, diretores e gestores B2B",
-    palavras_chave: ["escala", "operação", "crescimento", "estratégia", "resultado"],
-    estilo: "tom de conversa direta, sem corporativês"
-  },
-  perfumaria: {
-    nome: "Perfumaria",
-    tom: "sensorial e sofisticado",
-    audiencia: "donos de perfumarias e marcas de fragrância",
-    palavras_chave: ["essência", "fragrância", "marca", "experiência", "consultoria"],
-    estilo: "linguagem sensorial, elegante e acolhedora"
-  },
-  mei: {
-    nome: "MEI",
-    tom: "prático e encorajador",
-    audiencia: "microempreendedores individuais",
-    palavras_chave: ["crescimento", "profissionalização", "vendas", "tempo", "organização"],
-    estilo: "linguagem simples, direta e motivadora"
-  }
-};
-
-// Configurações por pilar
-const pillarConfig = {
-  dor: {
-    nome: "Dor",
-    objetivo: "espelhar a realidade do cliente e gerar identificação imediata",
-    gatilhos: ["frustração", "cansaço", "sobrecarga", "perda de vendas"]
-  },
-  educacao: {
-    nome: "Educação",
-    objetivo: "ensinar algo valioso e posicionar a MOVARE como autoridade",
-    gatilhos: ["aprendizado", "insight", "melhoria", "conhecimento"]
-  },
-  prova: {
-    nome: "Prova Social",
-    objetivo: "mostrar cases reais e resultados comprovados",
-    gatilhos: ["confiança", "credibilidade", "resultados", "experiência"]
-  },
-  oferta: {
-    nome: "Oferta",
-    objetivo: "apresentar o serviço e converter em ação",
-    gatilhos: ["solução", "transformação", "oportunidade", "facilidade"]
-  }
-};
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY
+});
 
 export default async function handler(req, res) {
-  // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -67,162 +18,102 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { contexto, objecao, nicho, pillar, format, hook } = req.body;
-
-    if (!contexto) {
-      return res.status(400).json({ error: 'Contexto é obrigatório' });
-    }
-
-    const nichoInfo = nichoConfig[nicho] || nichoConfig.b2b;
-    const pillarInfo = pillarConfig[pillar] || pillarConfig.dor;
-
-    // Construir o prompt para o Gemini
-    const prompt = `
-Você é um copywriter sênior especializado em criar carrosséis de Instagram para a MOVARE, uma empresa de terceirização de atendimento, pré-vendas e pós-vendas.
+    const prompt = `Você é um estrategista de conteúdo sênior da MOVARE, especializado em gerar ideias de posts para Instagram.
 
 ## CONTEXTO DA MOVARE:
-- Empresa especializada em atendimento humanizado para empresas
-- +6 anos de mercado
-- +80 clientes atendidos
+- Empresa de terceirização de atendimento, pré-vendas e pós-vendas
+- +6 anos de mercado, +80 clientes atendidos
 - Atua nos nichos: B2B Executivo, Perfumaria e MEI
-- Diferencial: equipe treinada no nicho específico do cliente
+- Pilares de conteúdo: Dor, Educação, Prova Social, Oferta
+- Tom: profissional mas acessível, sem corporativês
 
-## CONFIGURAÇÃO DO POST:
-- Nicho: ${nichoInfo.nome}
-- Tom de voz: ${nichoInfo.tom}
-- Audiência: ${nichoInfo.audiencia}
-- Pilar: ${pillarInfo.nome}
-- Objetivo: ${pillarInfo.objetivo}
-- Gatilhos: ${pillarInfo.gatilhos.join(', ')}
-- Estilo: ${nichoInfo.estilo}
+## TAREFA:
+Gere EXATAMENTE 5 ideias diferentes de posts para carrossel de Instagram.
+Varie entre os nichos (B2B, Perfumaria, MEI) e pilares (Dor, Educação, Prova, Oferta).
 
-## CONTEXTO FORNECIDO:
-${contexto}
-${objecao ? `\nObjeção a quebrar: ${objecao}` : ''}
-${hook ? `\nHook sugerido: "${hook}"` : ''}
-
-## INSTRUÇÕES:
-Crie um CARROSSEL DE 10 SLIDES para Instagram seguindo EXATAMENTE este formato.
-Cada slide deve ter no MÁXIMO 3 linhas.
-Ritmo de leitura rápido e progressão lógica.
+Use problemas reais que os clientes enfrentam:
+- B2B: donos de empresa sobrecarregados, não conseguem escalar, presos na operação
+- Perfumaria: donas de perfumaria que atendem tudo sozinhas, perdem vendas, atendimento genérico
+- MEI: microempreendedores que querem profissionalizar mas acham caro, fazem tudo sozinhos
 
 ## FORMATO DE SAÍDA (JSON):
-Retorne APENAS um objeto JSON válido, sem markdown, sem explicações. Use este formato exato:
+Retorne APENAS um objeto JSON válido neste formato exato, sem markdown, sem explicações:
 
 {
-  "hook": "frase de capa impactante",
-  "slides": [
+  "ideas": [
     {
-      "title": "CAPA",
-      "text": "frase principal da capa (máximo 2 linhas)",
-      "subtext": ""
+      "nicho": "perfumaria",
+      "pillar": "dor",
+      "title": "Título curto e impactante (máx 6 palavras)",
+      "hook": "Frase de abertura do carrossel (máx 8 palavras)",
+      "contexto": "Descrição de 2-3 frases com público, dor e ângulo do post"
     },
     {
-      "title": "LEAD",
-      "text": "frase que contextualiza e introduz o problema/solução",
-      "subtext": "complemento da ideia principal"
-    },
-    {
-      "title": "CORPO 1 · O contexto",
-      "text": "primeiro ponto principal sobre o contexto do nicho",
-      "subtext": "detalhe ou dado que reforça"
-    },
-    {
-      "title": "CORPO 2 · Nossa especialização",
-      "text": "como a MOVARE se especializou nesse nicho específico",
-      "subtext": "o que nos diferencia dos generalistas"
-    },
-    {
-      "title": "CORPO 3 · O que cuidamos",
-      "text": "serviços específicos que a MOVARE oferece para este nicho",
-      "subtext": "benefício tangível de cada serviço"
-    },
-    {
-      "title": "CORPO 4 · Credibilidade",
-      "text": "dados, números ou fatos que geram confiança",
-      "subtext": "por que escolhemos nos especializar nisso"
-    },
-    {
-      "title": "RESULTADO",
-      "text": "frase aspiracional mostrando o depois (com MOVARE)",
-      "subtext": "os 3 principais benefícios resumidos"
-    },
-    {
-      "title": "DEPOIMENTO",
-      "text": "\\"Depoimento curto e impactante de cliente real\\"",
-      "subtext": "— Nome da Empresa ★★★★★"
-    },
-    {
-      "title": "PARA QUEM É",
-      "text": "Este serviço é pra você se…",
-      "subtext": "◆ ponto 1\\n◆ ponto 2\\n◆ ponto 3"
-    },
-    {
-      "title": "CTA",
-      "text": "Chamada para ação principal",
-      "subtext": "Link na bio · movare.br"
+      "nicho": "b2b",
+      "pillar": "educacao",
+      "title": "Título curto",
+      "hook": "Frase de abertura",
+      "contexto": "Contexto detalhado"
     }
   ]
 }
 
 ## REGRAS:
-1. CADA slide no MÁXIMO 3 linhas
-2. Tom de ${nichoInfo.tom}
-3. Use palavras-chave do nicho: ${nichoInfo.palavras_chave.join(', ')}
-4. DEPOIMENTO use nome fictício mas verossímil para o nicho ${nichoInfo.nome}
-5. CTA sempre termina com "Link na bio · movare.br"
-6. NÃO use linguagem corporativa genérica
-7. Seja específico para o nicho ${nichoInfo.nome}
-8. Retorne APENAS o JSON, sem texto adicional
-`;
+1. EXATAMENTE 5 ideias
+2. Pelo menos 1 ideia de cada nicho (B2B, Perfumaria, MEI)
+3. Os hooks devem ser curtos e impactantes
+4. O contexto deve ser detalhado o suficiente para gerar um bom carrossel
+5. Retorne APENAS o JSON`;
 
-    // Chamar Gemini
-    const model = genAI.getGenerativeModel({ 
-      model: "gemini-2.0-flash",
-      generationConfig: {
-        temperature: 0.9,
-        topK: 40,
-        topP: 0.95,
-        maxOutputTokens: 2048,
-      }
+    const completion = await groq.chat.completions.create({
+      messages: [
+        {
+          role: "system",
+          content: "Você é um estrategista de conteúdo. Você SEMPRE retorna APENAS JSON válido com um array de 5 ideias, sem markdown, sem explicações."
+        },
+        {
+          role: "user",
+          content: prompt
+        }
+      ],
+      model: "llama-3.3-70b-versatile",
+      temperature: 1.0,
+      max_tokens: 2048,
+      top_p: 0.95
     });
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    let text = response.text();
+    let text = completion.choices[0]?.message?.content || '';
 
-    // Limpar markdown se vier
+    // Limpar markdown
     text = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
 
-    // Tentar parsear o JSON
-    let carousel;
+    // Tentar encontrar JSON no texto
+    const jsonMatch = text.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      text = jsonMatch[0];
+    }
+
+    let data;
     try {
-      carousel = JSON.parse(text);
+      data = JSON.parse(text);
     } catch (parseError) {
-      console.error('Erro ao parsear resposta:', text);
-      throw new Error('Formato de resposta inválido da IA');
+      console.error('Erro ao parsear:', text);
+      throw new Error('Formato de resposta inválido');
     }
 
-    // Validar estrutura
-    if (!carousel.slides || carousel.slides.length < 5) {
-      throw new Error('Carrossel gerado com poucos slides');
+    if (!data.ideas || data.ideas.length === 0) {
+      throw new Error('Nenhuma ideia gerada');
     }
 
-    // Garantir 10 slides
-    while (carousel.slides.length < 10) {
-      carousel.slides.push({
-        title: `SLIDE ${carousel.slides.length + 1}`,
-        text: "Conteúdo complementar",
-        subtext: "Mais informações sobre o serviço"
-      });
-    }
+    // Garantir 5 ideias
+    data.ideas = data.ideas.slice(0, 5);
 
-    return res.status(200).json(carousel);
+    return res.status(200).json(data);
 
   } catch (error) {
-    console.error('Erro na geração:', error);
+    console.error('Erro:', error);
     return res.status(500).json({ 
-      error: 'Erro ao gerar conteúdo',
+      error: 'Erro ao gerar ideias',
       message: error.message 
     });
   }
