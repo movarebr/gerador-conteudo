@@ -1,15 +1,24 @@
-# MOVARE · Gerador de Conteúdo
+# MOVARE · Gerador de Conteúdo (Groq)
 
-Gerador de posts estratégicos usando IA, baseado na Anatomia do Post Ideal da MOVARE.
+## 🚀 Tecnologia
+- **Frontend**: HTML/CSS/JS puro
+- **Backend**: Vercel Serverless Functions
+- **IA**: Groq com Llama 3.3 70B
 
-## 🚀 Deploy
+## ⚡ Por que Groq?
+- **Mais rápido**: Respostas em ~1-2 segundos
+- **Mais barato**: API gratuita para começar
+- **Open source**: Modelos como Llama 3
 
-1. Faça fork/clone deste repositório
-2. Conecte ao Vercel
-3. Configure a variável de ambiente `ANTHROPIC_API_KEY`
-4. Deploy!
+## 🔧 Configuração
 
-## 🔧 Desenvolvimento local
+### 1. Obter API Key do Groq
+1. Acesse: https://console.groq.com
+2. Crie uma conta (grátis)
+3. Vá em "API Keys"
+4. Crie uma nova chave
+5. Copie a chave (começa com `gsk_`)
 
+### 2. Instalar dependências
 ```bash
-npx vercel dev
+npm install
